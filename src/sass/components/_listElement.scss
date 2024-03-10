@@ -1,0 +1,53 @@
+.list-element {
+  &-nav {
+    font-size: 1.2rem;
+    font-family: "Courier New", Courier, monospace;
+    font-weight: 900;
+    letter-spacing: 0.16rem;
+  }
+
+  &-entry {
+    //make it fit
+    height: 25rem;
+    width: 14rem;
+
+    margin: 1rem;
+
+    border-radius: 0.2rem;
+
+    //default styling for encrypted data
+    overflow-y: auto;
+    scrollbar-width: thin;
+
+    opacity: 0.6;
+    user-select: none;
+    cursor: pointer;
+
+    //default
+    &:hover {
+      opacity: 1;
+    }
+
+    //font
+    word-wrap: break-word;
+    font-size: 1rem;
+    line-height: 1.6;
+    font-weight: 700;
+    letter-spacing: 0.1rem;
+
+    padding: 1rem;
+
+    //background colors
+    &-light {
+      @include toggle-bg-c("dark", "color-light-2", "color-dark-3");
+      scrollbar-color: map-get($map: $theme-colors, $key: "color-dark-3")
+        map-get($map: $theme-colors, $key: "color-light-2");
+    }
+
+    &-dark {
+      @include toggle-bg-c("light", "color-dark-2", "color-dark-0");
+      scrollbar-color: map-get($map: $theme-colors, $key: "color-dark-0")
+        map-get($map: $theme-colors, $key: "color-dark-2");
+    }
+  }
+}

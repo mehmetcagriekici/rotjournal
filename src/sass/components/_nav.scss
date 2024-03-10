@@ -1,0 +1,101 @@
+.nav {
+  //occupies 40% of the with and 8% of the height
+  height: 3rem;
+  width: 52%;
+
+  //increase width depending on the screen size. Basic fix
+  @include assign-media("navMediumWidth", $navMediumWidth);
+  @include assign-media("navSmallWidth", $navSmallWidth);
+
+  //displays 3 main items; 1 list which has 2 child elements, 1 conditional button (logout) and a toggle darkmode-lighmode button
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  position: fixed;
+
+  //defult padding
+  padding-right: 4rem;
+
+  //will always display
+  &-top {
+    right: 0;
+    top: 0;
+
+    //little bit of margin to top, so its shape will be more clear
+    margin-top: 0.5%;
+
+    //borders
+    border-top-left-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+
+    //zero border radius for smallest screens, since nav width is 100%
+    @include assign-media("navSmallBorderRadius", $navSmallBorderRadius);
+
+    //opposite colors from the body
+    &-light {
+      @include toggle-bg-c("dark", "color-dark-3", "color-dark-0");
+    }
+
+    &-dark {
+      @include toggle-bg-c("light", "color-light-3", "color-light-0");
+    }
+  }
+
+  //display depending on auth
+  &-bot {
+    left: 0;
+    bottom: 0;
+
+    //little bit of margin to bot, so its shape will be more clear
+    margin-bottom: 0.5%;
+
+    justify-content: left;
+
+    //border raiuses
+    border-top-right-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+
+    //zero border radius for smallest screens, since nav width is 100%
+    @include assign-media("navSmallBorderRadius", $navSmallBorderRadius);
+
+    user-select: none;
+
+    //list
+    & > ul {
+      justify-content: left;
+      align-items: center;
+      gap: 6rem;
+
+      //remove gap on screens smaller than 864px width
+      @include assign-media("navBotGap", $navBotGap);
+
+      & > button {
+        border-right: 0.1rem solid;
+
+        margin-top: 0.8rem;
+
+        font-size: 3rem;
+      }
+
+      & > li {
+        text-decoration: underline;
+        text-transform: capitalize;
+        font-weight: 700;
+        font-size: 1.4rem;
+
+        //decrease font size depending on the screen width
+        @include assign-media("fontSizeMediumOneOne", $fontSizeMediumOneOne);
+      }
+    }
+
+    //same theme with text entry field!
+    &-light {
+      @include toggle-bg-c("dark", "color-light-2", "color-dark-3");
+    }
+
+    &-dark {
+      @include toggle-bg-c("light", "color-dark-2", "color-dark-0");
+    }
+  }
+}

@@ -1,0 +1,192 @@
+$base-white: #fff;
+$base-black: #000;
+$base-grey: #aaa;
+$base-red: #c21;
+
+//darkmode/lightmode state management with redux
+$theme-colors: (
+  //link: https://colorhunt.co/palette/f8f0e5eadbc8dac0a3102c57
+  "color-light-3": #f8f0e5,
+  "color-light-2": #eadbc8,
+  "color-light-1": #dac0a3,
+  "color-light-0": #102c57,
+
+  //link: https://colorhunt.co/palette/2d32504247697077a1f6b17a
+  "color-dark-3": #2d3250,
+  "color-dark-2": #424769,
+  "color-dark-1": #7077a1,
+  "color-dark-0": #f6b17a
+);
+
+//media applies while screen getting smaller
+//specific values for specific conditions and unique components or specific conditions for general
+//default points:
+//heights and widths (screen breakpoints)
+$largeWidth: 120rem;
+$mediumWidth: 60rem; //half of desktop
+$smallWidth: 32rem;
+//only one height check (apx. 600px)
+/*
+does not effect auth, nav, profile
+shows only one of the profile children. list or form
+reposition time button
+*/
+$breakHeight: 38rem;
+
+//component size
+//nav breaks at 60rem width (increase width)
+$navMediumWidth: 86%;
+//nav break at 32rem width (increase width)
+$navSmallWidth: 100%;
+//auth breaks at 32 rem width (declare width)
+$authSmallWidth: 80%;
+//increase entry form width on mediumWidth breakpoint
+$entryFormMediumWidth: 80%;
+//increase entry form time div width on medium width breakpoint
+$entryFormTimeMediumWidth: 175%;
+//lower home height on smallest width
+$homeSmallWidthHeight: 86%;
+//lower entries list height on smallest screens
+$entriesListSmallWidthHeight: 80%;
+//submit modal - pin width on medium width breakpoint
+$modalSubmitPinMediumWidth: 50%;
+$modalSubmitPinSmallWidth: 90%;
+//widths and heights and positions of button for height breakpoint
+//entry form
+$formHeightWidth: 100%;
+$formHeightHeight: 80%;
+//entry list
+$listHeightWidth: 100%;
+$listHeightHeight: 80%;
+//time button
+$timeButtonHeightTop: 17%;
+$timeButtonHeightLeft: 10%;
+
+//border, border-radius
+//no nav border radius for 32rem and below
+$navSmallBorderRadius: 0;
+//no auth  border at 32rem and below
+$authSmallBorder: none;
+
+//font size
+//new font sizes for medium breakpoint
+$fontSizeMediumOne: 1rem;
+$fontSizeMediumOneOne: 1.1rem;
+
+//gap
+//decrease nav bot gap starting from medium width
+$navBotGap: 3.6rem;
+//zero gap on small
+$smallNoGap: 0;
+
+//positions
+//reposition reset constant time button on entry form
+$entryFormTimeButtonMediumTop: 15%;
+$entryFormTimeButtonMediumLeft: 0;
+$entryFormTimeButtonSmallTop: 50%;
+$entryFormTimeButtonSmallLeft: 10%;
+$mediumPositionRightOneFive: 15%;
+$smallPositionRightFive: 5%;
+$smallPositionTopOneFive: 15%;
+
+//display options
+//on smallest width
+$smallDirectionColRev: column-reverse;
+$smallDirectionCol: column;
+$breakHeightDisplayNone: none;
+
+//margin
+$smallZeroMargin: 0;
+
+//css attributes map for media queries
+/*
+change specific css variable depending on the screen size.
+for example: only screen width concerns margin right, media query for margin right will check for screen width. 
+add new attributes depending on the need
+this logic can be really specific.
+*/
+//media queries map
+$mediaMap: (
+  //component sizes
+  "navMediumWidth": "(max-width: #{$mediumWidth})",
+  "navSmallWidth": "(max-width: #{$smallWidth})",
+  "authSmallWidth": "(max-width: #{$smallWidth})",
+  "entryFormMediumWidth": "(max-width: #{$mediumWidth})",
+  "entryFormTimeMediumWidth": "(max-width: #{$mediumWidth})",
+  "homeSmallWidthHeight": "(max-width: #{$smallWidth})",
+  "entriesListSmallWidthHeight": "(max-width: #{$smallWidth})",
+  "modalSubmitPinMediumWidth": "(max-width: #{$mediumWidth})",
+  "modalSubmitPinSmallWidth": "(max-width: #{$mediumWidth})",
+  "formHeightWidth": "(max-height: #{$breakHeight})",
+  "formHeightHeight": "(max-height: #{$breakHeight})",
+  "listHeightWidth": "(max-height: #{$breakHeight})",
+  "listHeightHeight": "(max-height: #{$breakHeight})",
+  //border, border-radius
+  "navSmallBorderRadius": "(max-width: #{$smallWidth})",
+  "authSmallBorder": "(max-width: #{$smallWidth})",
+  //font size
+  "fontSizeMediumOne": "(max-width: #{$mediumWidth})",
+  "fontSizeMediumOneOne": "(max-width: #{$mediumWidth})",
+  //gap
+  "navBotGap": "(max-width: #{$mediumWidth})",
+  "smallNoGap": "(max-width: #{$smallWidth})",
+  //positions
+  "entryFormTimeButtonMediumTop": "(max-width: #{$mediumWidth})",
+  "entryFormTimeButtonMediumLeft": "(max-width: #{$mediumWidth})",
+  "entryFormTimeButtonSmallTop": "(max-width: #{$smallWidth})",
+  "entryFormTimeButtonSmallLeft": "(max-width: #{$smallWidth})",
+  "mediumPositionRightOneFive": "(max-width: #{$mediumWidth})",
+  "smallPositionRightFive": "(max-width: #{$mediumWidth})",
+  "smallPositionTopOneFive": "(max-width: #{$mediumWidth})",
+  "timeButtonHeightTop": "(max-height: #{$breakHeight})",
+  "timeButtonHeightLeft": "(max-height: #{$breakHeight})",
+  //display options
+  "smallDirectionColRev": "(max-width: #{$smallWidth})",
+  "smallDirectionCol": "(max-width: #{$smallWidth})",
+  "breakHeightDisplayNone": "(max-height: #{$breakHeight})",
+  //margin
+  "smallZeroMargin": "(max-width: #{$smallWidth})"
+);
+
+//fixes map (same keys with mediaMap)
+$attrMap: (
+  //component size
+  "navMediumWidth": "width",
+  "navSmallWidth": "width",
+  "authSmallWidth": "width",
+  "entryFormMediumWidth": "width",
+  "entryFormTimeMediumWidth": "width",
+  "modalSubmitPinMediumWidth": "width",
+  "modalSubmitPinSmallWidth": "width",
+  "homeSmallWidthHeight": "height",
+  "entriesListSmallWidthHeight": "height",
+  "formHeightWidth": "height",
+  "formHeightHeight": "height",
+  "listHeightWidth": "height",
+  "listHeightHeight": "height",
+  //border, border-radius
+  "navSmallBorderRadius": "border-radius",
+  "authSmallBorder": "border",
+  //font size
+  "fontSizeMediumOne": "font-size",
+  "fontSizeMediumOneOne": "font-size",
+  //gap
+  "navBotGap": "gap",
+  "smallNoGap": "gap",
+  //positions
+  "entryFormTimeButtonMediumTop": "top",
+  "entryFormTimeButtonMediumLeft": "left",
+  "entryFormTimeButtonSmallTop": "top",
+  "entryFormTimeButtonSmallLeft": "left",
+  "mediumPositionRightOneFive": "right",
+  "smallPositionRightFive": "right",
+  "smallPositionTopOneFive": "top",
+  "timeButtonHeightTop": "top",
+  "timeButtonHeightLeft": "left",
+  //display options
+  "smallDirectionColRev": "flex-direction",
+  "smallDirectionCol": "flex-direction",
+  "breakHeightDisplayNone": "display",
+  //margin
+  "smallZeroMargin": "margin"
+);

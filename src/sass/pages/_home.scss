@@ -1,0 +1,26 @@
+.home {
+  //whole screen
+  height: 100%;
+  width: 100%;
+
+  //left side diary entry form, right side previous entries list
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  //gap between list and form
+  gap: 10%;
+
+  //on smallest screens make gap zero and make flex direction column reverse and lower the height
+  @include assign-media("smallNoGap", $smallNoGap);
+  @include assign-media("smallDirectionColRev", $smallDirectionColRev);
+  @include assign-media("homeSmallWidthHeight", $homeSmallWidthHeight);
+
+  //button position
+  & > button {
+    font-size: 3rem;
+    position: fixed;
+    top: 8%;
+    left: 1%;
+  }
+}

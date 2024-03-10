@@ -1,0 +1,81 @@
+.list {
+  display: flex;
+
+  &-nav {
+    flex-wrap: nowrap;
+    gap: 4rem;
+  }
+
+  &-entries {
+    flex-wrap: wrap;
+    justify-content: safe flex-start;
+    align-items: safe flex-start;
+
+    margin-top: 3%;
+
+    //remove margin at smallest width breakpoint
+    @include assign-media("smallZeroMargin", $smallZeroMargin);
+
+    //similar shape with entry form
+    height: 91%;
+    width: 42%;
+
+    //on smallest screens (width)
+    //decrease height
+    //increase width to 100%
+    //make flex direction column
+    //height
+    @include assign-media(
+      "entriesListSmallWidthHeight",
+      $entriesListSmallWidthHeight
+    );
+
+    //width : 100%
+    @include assign-media("navSmallWidth", $navSmallWidth);
+    //flex direction
+    @include assign-media("smallDirectionCol", $smallDirectionCol);
+
+    //height break sizes
+    @include assign-media("listHeightWidth", $listHeightWidth);
+    @include assign-media("listHeightHeight", $listHeightHeight);
+
+    //auto overflow in case entries overflows the screen
+    overflow: auto;
+
+    //scroll bar styles
+    scrollbar-width: thin;
+
+    //default message
+    & > span {
+      text-align: center;
+      font-size: 3rem;
+      font-weight: 700;
+      letter-spacing: 0.1rem;
+      line-height: 1.6;
+
+      margin: 1rem;
+      margin-top: 30%;
+    }
+
+    //background color and scroll bar colors
+    &-light {
+      @include toggle-bg-c("dark", "color-dark-0", "color-light-0");
+      //alter scrollbar colors depending on the theme
+      scrollbar-color: map-get($map: $theme-colors, $key: "color-dark-3")
+        map-get($map: $theme-colors, $key: "color-light-3");
+    }
+
+    &-dark {
+      @include toggle-bg-c("light", "color-light-2", "color-dark-3");
+      //alter scrollbar colors depending on the theme
+      scrollbar-color: map-get($map: $theme-colors, $key: "color-light-3")
+        map-get($map: $theme-colors, $key: "color-dark-3");
+    }
+  }
+
+  //remove or add this class depending on the state
+  &-hide {
+    //after height breakpoint makes display none
+    @include assign-media("breakHeightDisplayNone", $breakHeightDisplayNone);
+  }
+}

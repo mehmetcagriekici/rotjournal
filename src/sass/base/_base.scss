@@ -1,0 +1,17 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+
+  //1rem is 10px
+  font-size: 62.5%;
+  //default font family
+  font-family: "Courier New", Courier, monospace;
+}

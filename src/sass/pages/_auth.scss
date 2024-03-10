@@ -1,0 +1,29 @@
+.auth {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5%;
+
+  //make border far
+  padding-right: 10%;
+
+  border-right: 0.3rem solid;
+
+  //on smallest screen no border and width is 80%
+  @include assign-media("authSmallBorder", $authSmallBorder);
+  @include assign-media("authSmallWidth", $authSmallWidth);
+
+  //toggle signup/login button
+  & > button {
+    margin-bottom: 8%;
+  }
+
+  &-login,
+  &-signup {
+    text-align: center;
+
+    border-top: 0.1rem solid;
+    padding-top: 3rem;
+  }
+}

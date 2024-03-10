@@ -1,0 +1,158 @@
+.input {
+  //default display
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  //default  width
+  width: 100%;
+
+  //reset border and background
+  border: none;
+  background: none;
+
+  //prevent default black
+  color: inherit;
+
+  //default font size
+  font-size: 1.6rem;
+
+  //while focused
+  &:focus {
+    outline: none;
+  }
+
+  &-auto {
+    user-select: none;
+
+    width: 30%;
+
+    border-bottom: 0.1rem solid;
+    padding-bottom: 0.6rem;
+    padding-left: 2%;
+
+    margin-top: 13%;
+
+    span {
+      margin-top: 0.6rem;
+      margin-left: 0.7rem;
+    }
+
+    &-field {
+      cursor: not-allowed;
+
+      background-color: $base-grey;
+
+      border-radius: 0.1rem;
+
+      color: $base-white;
+      font-size: 1.2rem;
+      text-align: center;
+      letter-spacing: 0.2rem;
+      line-height: 1.6;
+
+      //decrease font size on medium break
+      @include assign-media("fontSizeMediumOne", $fontSizeMediumOne);
+    }
+
+    &-label {
+      text-transform: uppercase;
+      font-size: 1.2rem;
+      letter-spacing: 0.2rem;
+      font-weight: 700;
+    }
+  }
+
+  &-entry {
+    flex-direction: column;
+
+    overflow-y: auto;
+    scrollbar-width: thin;
+
+    height: 80%;
+
+    font-size: 1.2rem;
+    line-height: 1.6;
+    font-weight: 700;
+
+    border-radius: 0.4rem;
+
+    &-field {
+      height: 100%;
+
+      resize: none;
+
+      //handled in nav component on button click, useToggleTheme custom hook
+      &-light {
+        @include toggle-bg-c("dark", "color-light-2", "color-dark-3");
+        //alter scrollbar colors depending on the theme
+        scrollbar-color: map-get($map: $theme-colors, $key: "color-dark-3")
+          map-get($map: $theme-colors, $key: "color-light-3");
+      }
+
+      &-dark {
+        @include toggle-bg-c("light", "color-dark-2", "color-light-3");
+        //alter scrollbar colors depending on the theme
+        scrollbar-color: map-get($map: $theme-colors, $key: "color-light-3")
+          map-get($map: $theme-colors, $key: "color-dark-3");
+      }
+    }
+  }
+
+  &-username {
+    border-bottom: 0.2rem solid;
+
+    &:focus {
+      background-color: $base-white;
+    }
+  }
+
+  &-pin,
+  &-pin-valid {
+    border-bottom: 0.2rem solid;
+
+    &:focus {
+      background-color: $base-white;
+    }
+  }
+
+  &-label {
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15rem;
+
+    //decrease font size on medium break
+    @include assign-media("fontSizeMediumOneOne", $fontSizeMediumOneOne);
+
+    &-entry {
+      width: 15%;
+    }
+  }
+
+  &-popper {
+    font-size: 0.9rem;
+    font-weight: 900;
+    letter-spacing: 0.1rem;
+
+    border-bottom: 0.18rem solid $base-red;
+
+    background-color: $base-grey;
+
+    width: 50%;
+
+    margin-top: 0.3rem;
+    margin-left: 27%;
+
+    color: $base-red;
+
+    opacity: 0.8;
+
+    &-large {
+      width: 98%;
+      font-size: 1.2rem;
+      margin: 0;
+      opacity: 1;
+    }
+  }
+}

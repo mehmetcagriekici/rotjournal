@@ -1,0 +1,107 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &-login {
+    gap: 2.2rem;
+  }
+
+  &-signup {
+    gap: 2.2rem;
+  }
+
+  &-entry {
+    height: 80%;
+    width: 42%;
+
+    //increase width on medium width break
+    @include assign-media("entryFormMediumWidth", $entryFormMediumWidth);
+    //make width 100% on small width break
+    @include assign-media("navSmallWidth", $navSmallWidth);
+
+    //height break sizes
+    @include assign-media("formHeightWidth", $formHeightWidth);
+    @include assign-media("formHeightHeight", $formHeightHeight);
+
+    margin-left: 6%;
+
+    padding-bottom: 4%;
+    padding-right: 10%;
+
+    border-right: 0.2rem solid;
+
+    //remove border on smallest width breakpoint
+    @include assign-media("authSmallBorder", $authSmallBorder);
+
+    &-time {
+      flex-direction: row;
+
+      height: 25%;
+      width: 150%;
+
+      //increase width on medium width break
+      @include assign-media(
+        "entryFormTimeMediumWidth",
+        $entryFormTimeMediumWidth
+      );
+
+      margin-bottom: 6%;
+
+      border-right: none;
+
+      & > button {
+        position: absolute;
+        top: 12%;
+        left: -4%;
+
+        //reposition the button on medium break
+        @include assign-media(
+          "entryFormTimeButtonMediumTop",
+          $entryFormTimeButtonMediumTop
+        );
+        @include assign-media(
+          "entryFormTimeButtonMediumLeft",
+          $entryFormTimeButtonMediumLeft
+        );
+
+        //reposition the button for smallest screens (480px width)
+        @include assign-media(
+          "entryFormTimeButtonSmallTop",
+          $entryFormTimeButtonSmallTop
+        );
+        @include assign-media(
+          "entryFormTimeButtonSmallLeft",
+          $entryFormTimeButtonSmallLeft
+        );
+
+        //height break point
+        @include assign-media("timeButtonHeightTop", $timeButtonHeightTop);
+        @include assign-media("timeButtonHeightLeft", $timeButtonHeightLeft);
+      }
+    }
+
+    & > button {
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: 0.1rem;
+
+      border-radius: 0.2rem;
+    }
+  }
+
+  & > button {
+    font-size: 1.8rem;
+    letter-spacing: 0.2rem;
+
+    margin-top: 2%;
+    margin-left: 20%;
+  }
+
+  //remove or add this class depending on the state
+  &-hide {
+    //after height breakpoint makes display none
+    @include assign-media("breakHeightDisplayNone", $breakHeightDisplayNone);
+  }
+}
